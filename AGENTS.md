@@ -46,6 +46,15 @@ decisions with the owner.
 
 ## Implementation boundaries
 
+### Architecture
+
+- This is a modular application, not Feature-Sliced Design. `app` composes
+  modules; a module owns its screen, local components, types, and use cases.
+- Extract code into a shared location only after a second real use. Do not add
+  FSD layers such as `entities`, `widgets`, or `processes`.
+- `platform` is introduced only for a concrete Tauri, storage, or sync adapter.
+  UI components must not call Tauri APIs directly.
+
 - Keep UI, application use cases, domain types, and Tauri/Rust integration
   separate when a feature becomes non-trivial.
 - Do not call the backend directly from components. Introduce a small client

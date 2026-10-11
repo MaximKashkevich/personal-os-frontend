@@ -2,7 +2,7 @@
 
 Windows desktop client for Personal OS, built with Tauri 2, React, TypeScript,
 Vite, Tailwind CSS v4, and shadcn/ui conventions. This repository currently
-contains only the frontend engineering foundation.
+contains a native application shell and frontend engineering foundation.
 
 ## Requirements
 
@@ -16,8 +16,9 @@ contains only the frontend engineering foundation.
 ```bash
 bun install
 bun run dev
-bun run tauri dev
+bun run tauri:dev
 bun run build
+bun run tauri:build
 bun run lint
 bun run format
 bun run format:check
@@ -27,6 +28,7 @@ bun run check
 
 ## Current scope
 
-The application shell, local protected storage, encryption, synchronization,
-backend integration, and domain features are intentionally not implemented yet.
-No user data is stored or transmitted by this baseline.
+The application shell supports light, dark, and system themes with a small set
+of accent tokens. Local protected storage, encryption, synchronization, backend
+integration, and domain features are intentionally not implemented yet. No user
+data is stored or transmitted by this baseline.
