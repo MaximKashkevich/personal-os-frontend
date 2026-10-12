@@ -1,4 +1,15 @@
-import { Maximize2, Minus, X } from "lucide-react";
+import {
+  Maximize2,
+  Minus,
+  PanelLeftClose,
+  PanelLeftOpen,
+  X,
+} from "lucide-react";
+
+type AppTitleBarProps = {
+  isSidebarVisible: boolean;
+  onToggleSidebar: () => void;
+};
 
 type WindowAction = "close" | "minimize" | "toggleMaximize";
 
@@ -22,7 +33,12 @@ async function startWindowDrag() {
   await getCurrentWindow().startDragging();
 }
 
-export function AppTitleBar() {
+export function AppTitleBar({
+  isSidebarVisible,
+  onToggleSidebar,
+}: AppTitleBarProps) {
+  const SidebarIcon = isSidebarVisible ? PanelLeftClose : PanelLeftOpen;
+
   return (
     <header
       className="group flex h-8 shrink-0 items-center justify-between border-b border-border bg-surface px-3 text-foreground transition-[background-color,color,border-color] duration-300 ease-out"
@@ -37,10 +53,24 @@ export function AppTitleBar() {
         void startWindowDrag();
       }}
     >
-      <div aria-hidden="true" className="flex items-center gap-1.5">
-        <span className="size-2.5 rounded-full bg-[#ff5f57] shadow-[inset_0_0_0_1px_rgb(0_0_0_/_0.14)]" />
-        <span className="size-2.5 rounded-full bg-[#febc2e] shadow-[inset_0_0_0_1px_rgb(0_0_0_/_0.14)]" />
-        <span className="size-2.5 rounded-full bg-[#28c840] shadow-[inset_0_0_0_1px_rgb(0_0_0_/_0.14)]" />
+      <div className="flex items-center gap-3">
+        <div aria-hidden="true" className="flex items-center gap-1.5">
+          <span className="size-2.5 rounded-full bg-[#ff5f57] shadow-[inset_0_0_0_1px_rgb(0_0_0_/_0.14)]" />
+          <span className="size-2.5 rounded-full bg-[#febc2e] shadow-[inset_0_0_0_1px_rgb(0_0_0_/_0.14)]" />
+          <span className="size-2.5 rounded-full bg-[#28c840] shadow-[inset_0_0_0_1px_rgb(0_0_0_/_0.14)]" />
+        </div>
+        <button
+          aria-label={
+            isSidebarVisible
+              ? "Скрыть боковую панель"
+              : "Показать боковую панель"
+          }
+          className="grid size-7 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          onClick={onToggleSidebar}
+          type="button"
+        >
+          <SidebarIcon aria-hidden="true" className="size-4 stroke-[1.8]" />
+        </button>
       </div>
       <div
         aria-label="Управление окном"

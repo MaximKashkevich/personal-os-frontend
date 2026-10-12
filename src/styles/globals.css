@@ -76,8 +76,8 @@
 html,
 body,
 #root {
+  height: 100%;
   min-width: 320px;
-  min-height: 100%;
 }
 
 body {
@@ -94,6 +94,151 @@ body {
   transition:
     color 240ms ease,
     background-color 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sidebar-nav-item:hover .sidebar-nav-icon {
+  color: var(--accent);
+}
+
+.sidebar-nav-item[data-motion="today"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(n + 5),
+.sidebar-nav-item[data-motion="planner"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(n + 5) {
+  animation: sidebar-calendar-day 380ms ease-out both;
+}
+
+.sidebar-nav-item[data-motion="today"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(6),
+.sidebar-nav-item[data-motion="planner"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(6) {
+  animation-delay: 45ms;
+}
+
+.sidebar-nav-item[data-motion="today"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(7),
+.sidebar-nav-item[data-motion="planner"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(7) {
+  animation-delay: 90ms;
+}
+
+.sidebar-nav-item[data-motion="today"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(8),
+.sidebar-nav-item[data-motion="planner"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(8) {
+  animation-delay: 135ms;
+}
+
+.sidebar-nav-item[data-motion="inbox"]:hover .sidebar-nav-icon > polyline {
+  stroke-dasharray: 32;
+  stroke-dashoffset: 32;
+  animation: sidebar-stroke-reveal 340ms ease-out forwards;
+}
+
+.sidebar-nav-item[data-motion="tasks"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(4) {
+  stroke-dasharray: 18;
+  stroke-dashoffset: 18;
+  animation: sidebar-stroke-reveal 320ms ease-out forwards;
+}
+
+.sidebar-nav-item[data-motion="memories"]:hover .sidebar-nav-icon > circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sidebar-photo-flash 420ms ease-out;
+}
+
+.sidebar-nav-item[data-motion="health"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(2) {
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+  animation: sidebar-stroke-reveal 360ms ease-out forwards;
+}
+
+.sidebar-nav-item[data-motion="study"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(2) {
+  transform-box: fill-box;
+  transform-origin: top;
+  animation: sidebar-tassel-swing 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sidebar-nav-item[data-motion="finance"]:hover
+  .sidebar-nav-icon
+  > path:first-child {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sidebar-wallet-indicator 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sidebar-nav-item[data-motion="insights"]:hover
+  .sidebar-nav-icon
+  > path:nth-child(4) {
+  stroke-dasharray: 34;
+  stroke-dashoffset: 34;
+  animation: sidebar-stroke-reveal 460ms ease-out forwards;
+}
+
+@keyframes sidebar-calendar-day {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes sidebar-stroke-reveal {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sidebar-photo-flash {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  45% {
+    opacity: 0.35;
+    transform: scale(1.8);
+  }
+}
+
+@keyframes sidebar-tassel-swing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(14deg);
+  }
+  70% {
+    transform: rotate(-7deg);
+  }
+}
+
+@keyframes sidebar-wallet-indicator {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  45% {
+    opacity: 0.35;
+    transform: scale(1.6);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
