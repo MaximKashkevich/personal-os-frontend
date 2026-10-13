@@ -10,7 +10,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <div className="absolute top-4 right-5 flex items-center gap-2.5">
+    <div className="flex shrink-0 items-center gap-2.5">
       <Sun
         aria-hidden="true"
         className={`size-5 transition-all duration-300 ease-out ${

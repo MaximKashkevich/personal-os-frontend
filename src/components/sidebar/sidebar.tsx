@@ -9,7 +9,7 @@ type SidebarProps = {
 
 export function Sidebar({ activeView, onNavigate }: SidebarProps) {
   return (
-    <aside className="flex h-full min-h-0 w-60 shrink-0 flex-col border-r border-border bg-surface py-4 transition-[background-color,border-color] duration-300 ease-out">
+    <aside className="flex h-full min-h-0 w-52 shrink-0 flex-col bg-surface py-5 transition-[background-color] duration-300 ease-out">
       <SidebarNavigation activeView={activeView} onNavigate={onNavigate} />
       <SidebarProfileMenu onNavigate={onNavigate} />
     </aside>

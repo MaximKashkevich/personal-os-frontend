@@ -7,7 +7,7 @@ type SidebarNavigationProps = {
 };
 
 const navItemClassName =
-  "group flex h-10 w-full cursor-pointer items-center gap-3 rounded-[10px] px-2.5 text-left text-[15px] font-medium transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
+  "group flex h-10 w-full cursor-pointer items-center gap-3 rounded-xl px-2.5 text-left text-[15px] font-medium transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
 
 export function SidebarNavigation({
   activeView,
@@ -16,13 +16,13 @@ export function SidebarNavigation({
   return (
     <nav
       aria-label="Primary navigation"
-      className="min-h-0 flex-1 space-y-5 px-3"
+      className="min-h-0 flex-1 space-y-7 px-4"
     >
       {navigationGroups.map((group) => (
         <section key={group.id} aria-labelledby={`${group.id}-label`}>
           <h2
             id={`${group.id}-label`}
-            className="mb-2 px-2 text-[11.5px] font-semibold tracking-[0.12em] text-muted-foreground"
+            className="mb-2 px-2 text-[11px] font-semibold tracking-[0.14em] text-muted-foreground"
           >
             {group.label}
           </h2>
@@ -38,8 +38,8 @@ export function SidebarNavigation({
                     "sidebar-nav-item",
                     navItemClassName,
                     isActive
-                      ? "bg-muted text-foreground shadow-[0_1px_2px_rgb(0_0_0_/_0.04)]"
-                      : "text-muted-foreground hover:bg-muted/70 hover:text-foreground",
+                      ? "bg-accent/12 text-accent shadow-[inset_0_1px_0_rgb(255_255_255_/_0.14)]"
+                      : "text-muted-foreground hover:bg-muted/75 hover:text-foreground",
                   )}
                   data-motion={view}
                   onClick={() => onNavigate(view)}
@@ -48,7 +48,7 @@ export function SidebarNavigation({
                   <Icon
                     aria-hidden="true"
                     className={cn(
-                      "sidebar-nav-icon size-[18.5px] shrink-0 stroke-[1.8] transition-colors duration-200 ease-out",
+                      "sidebar-nav-icon size-5 shrink-0 stroke-[1.8] transition-colors duration-200 ease-out",
                       isActive ? "text-accent" : "text-muted-foreground",
                     )}
                   />

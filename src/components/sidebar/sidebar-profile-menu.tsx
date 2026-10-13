@@ -17,15 +17,15 @@ const profileInitial = profileName.slice(0, 1).toUpperCase();
 
 export function SidebarProfileMenu({ onNavigate }: SidebarProfileMenuProps) {
   return (
-    <div className="mt-5 border-t border-border pt-3">
-      <div className="px-3">
+    <div className="mt-5 border-t border-border/80 pt-3">
+      <div className="px-4">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
               className="group flex h-12 w-full cursor-pointer items-center gap-3 rounded-xl px-2 text-left outline-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               type="button"
             >
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-accent text-[13px] font-semibold text-accent-foreground">
+              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-accent text-[13px] font-semibold text-accent-foreground shadow-[inset_0_1px_0_rgb(255_255_255_/_0.2)]">
                 {profileInitial}
               </span>
               <span className="min-w-0 flex-1">
