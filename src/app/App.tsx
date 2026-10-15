@@ -3,6 +3,7 @@ import { AppPageLayout } from "@/app/AppPageLayout";
 import { AppTitleBar } from "@/app/AppTitleBar";
 import { Sidebar, type AppView } from "@/components/sidebar";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { DailyFlowPage } from "@/modules/daily-flow";
 import { InboxPage } from "@/modules/inbox";
 
 const viewTitles: Record<AppView, string> = {
@@ -45,6 +46,7 @@ export function App() {
             actions={<ThemeToggle />}
             title={viewTitles[activeView]}
           >
+            {activeView === "today" ? <DailyFlowPage /> : null}
             {activeView === "inbox" ? <InboxPage /> : null}
           </AppPageLayout>
         </main>
